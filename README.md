@@ -2,6 +2,14 @@
 
 Remove menial event handling
 
+## Install
+
+```bash
+npm install react-action-decorators
+# or
+yarn add react-action-decorators
+```
+
 ## Example
 
 ```js
