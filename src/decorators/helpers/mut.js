@@ -5,7 +5,7 @@ function isFunction(fn) {
 }
 
 export const createMut = target => {
-  return function mut(field: string, transform?: (arg1: any) => any) {
+  return function mut(field, transform = undefined) {
     return e => {
       const passedValue = findValue(e);
       const value = (transform && isFunction(transform))

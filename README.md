@@ -23,6 +23,7 @@ export default class MyComponent extends Component {
 }
 ```
 
+Demo: https://codesandbox.io/s/2067py0prn
 
 ## Available Helpers
 

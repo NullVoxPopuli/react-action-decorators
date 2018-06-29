@@ -4,7 +4,7 @@
 // TODO: figure out the types for this mess
 //
 // handles: input, checkbox, radio
-export function findValue(e: Event) {
+export function findValue(e) {
   if (e === undefined || e === null) return null;
 
   const target = e.target;
