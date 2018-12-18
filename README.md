@@ -87,7 +87,7 @@ export default class MyComponent extends Component {
 }
 ```
 
-Using less code, and not having to handle events yourself results in the code being less error prone.
+Using less code and not having to handle events yourself results in the code being less error prone.
 It also declaratively conveys intent by coupling a state value with the state updating function (very similar to react hooks).
 
 
