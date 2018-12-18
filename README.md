@@ -65,24 +65,25 @@ Demo: https://codesandbox.io/s/2067py0prn
 
 - `pipe`
 
-```jsx
-render() {
-  const { text } = this.state;
-  const { pipe } = this;
+  ```jsx
+  render() {
+    const { text } = this.state;
+    const { pipe } = this;
 
-  return (
-    <input
-      type="input"
-      value={text}
-      onChange={pipe([
-        mut("text"),
-        this.validatePipedValue,
-        (value: string) => console.log(value)
-      ])}
-    />
-  );
-}
-```
+    return (
+      <input
+        type="input"
+        value={text}
+        onChange={pipe([
+          mut("text"),
+          this.validatePipedValue,
+          (value: string) => console.log(value)
+        ])}
+      />
+    );
+  }
+  ```
+
 - `useMut`
 
   ```jsx
