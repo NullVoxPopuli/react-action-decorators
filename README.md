@@ -74,7 +74,7 @@ export default class MyComponent extends Component {
   render() {
     const [ firstName, firstNameChanged ] = this.useMut('text');
     const [ lastName, lastNameChanged ] = this.useMut('text');
-    const [ isEnabled, toggler ] = this.toggle('isEnabled');
+    const [ isEnabled, toggler ] = this.useToggle('isEnabled');
 
     return (
       <div>
