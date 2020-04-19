@@ -1,5 +1,5 @@
-import { createMut } from "./helpers/mut";
-import { createToggle } from "./helpers/toggle";
+import { createMut, createUseMut } from "./helpers/mut";
+import { createToggle, createUseToggle } from "./helpers/toggle";
 import { createPipe } from "./helpers/pipe";
 
 // TODO:
@@ -8,23 +8,24 @@ import { createPipe } from "./helpers/pipe";
 // https://github.com/NullVoxPopuli/react-state-helpers/blob/master/src/helpers/index.js#L25
 export const withTemplateHelpers = (target: any) => {
   const newProperties = {
-    mut: createMut(target),
-    toggle: createToggle(target),
-    pipe: createPipe(target)
+    mut: createMut,
+    toggle: createToggle,
+    pipe: createPipe,
+    useMut: createUseMut,
+    useToggle: createUseToggle,
   };
 
-  // new constructor, kinda
-  const injected = function(...args: any[]) {
-    const newKeys = Object.keys(newProperties);
+  Object.keys(newProperties).forEach(name => {
+    const creator = newProperties[name];
+    const boundAction = creator(target.prototype);
 
-    newKeys.forEach(key => {
-      this[key] = newProperties[key].bind(this);
+    Object.defineProperty(target.prototype, name, {
+      value: boundAction,
+      enumerable: false,
+      configurable: false,
+      writable: false
     });
+  });
 
-    return target.apply(this, args);
-  };
-
-  injected.prototype = target.prototype;
-
-  return injected;
+  return target;
 };
